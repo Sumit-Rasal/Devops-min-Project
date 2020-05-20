@@ -5,15 +5,17 @@ metadata:
 spec:
         replicas: 3
         selector:
-                matchExpressions:
-                        - { key: env, operator: In, values: [ production ] }
-                        - { key: region, operator: In, values: [ india ] } 
+             matchLabels:
+                     env: production 
+                     #   matchExpressions:
+                     #  - { key: env, operator: In, values: [ production ] }
+                     #  - { key: region, operator: In, values: [ india ] } 
         template:
             metadata:
                     name: myweb-pod
                     labels:
                             env: production
-                            region: india
+                            
             spec:
                  containers:
                           - name: myweb-con
